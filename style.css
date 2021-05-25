@@ -7,8 +7,6 @@
 
 body {
 	margin: 0;
-	overflow: hidden;
-	background-color: #BFB5AF;
 }
 
 .navbar {
@@ -20,6 +18,11 @@ body {
 	background: #353535;
 	padding: 0px;
 	margin: 0px;
+	opacity: 0;
+}
+
+.navbar:hover {
+	opacity: 1;
 }
 
 .navbar a {
@@ -27,7 +30,7 @@ body {
 	color: white;
 	display: block;
 	text-align: center;
-	height: 25px;
+	height: 45px;
 	padding: 10px;
 	float: left;
 }
@@ -41,11 +44,51 @@ body {
 	background: #86bbd8;
 }
 
-h1 {
-	margin: 0;
+
+* { box-sizing: border-box; }
+.video-background {
+  background: #000;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -99;
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#vidtop-content {
+	top: 0;
+	color: #fff;
 }
 
-#ytbg {
-	height: 100%;
-	width: 100%;
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground { width: 300%; left: -100%; }
+}
+@media all and (max-width: 600px) {
+.vid-info { width: 50%; padding: .5rem; }
+.vid-info h1 { margin-bottom: .2rem; }
+}
+@media all and (max-width: 500px) {
+.vid-info .acronym { display: none; }
+}
+
+#play-button {
+	width: 200px;
+	position: fixed;
+  	top: 50%;
+  	left: 50%;
+  	/* bring your own prefixes */
+  	transform: translate(-50%, -50%);
+}
+
+#playButtonWrapper {
+	
 }

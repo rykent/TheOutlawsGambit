@@ -3,28 +3,85 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="scripts/jquery.youtube-background.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.2.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/stamat/jquery.youtube-background/jquery.youtube-background.min.js"></script>
 	<title>The Outlaws Gambit</title>
 </head>
 <body>
+	<div class="nav-container">
 	<div class="navbar">
-		<a href="index.html" id="homepage">The Outlaws Gambit</a>
+		<a href="index.html" id="playButton">Play Game</a>
 		<a href="skills1.html">About The Project</a>
 		<a href="skills2.html">How To Play</a>
 	</div>
-	<div id="ytbg" data-youtube="https://www.youtube.com/watch?v=Cit-j4B8Osw"></div>
-
+	</div>
+	<div id="playButtonWrapper"><img src="http://www.clipartbest.com/cliparts/4nc/Egq/4ncEgq4TA.png" id="play-button"></div>
+	<div class="video-background">
+    	<div class="video-foreground">
+      		<iframe id="player" src="https://www.youtube.com/embed/gLxw06x8lGo?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+    	</div>
+	</div>
 	<script type="text/javascript">
-    	jQuery(document).ready(function() {
-        	$('[data-youtube]').youtube_background();
-    	});
-	</script>
 
-	<script>
-		function startGame() {
-			document.getElementsByTagName("H1").setAttribute("class", "democlass"); 
+		var whichVideo = 0;
+
+		var tag = document.createElement('script');
+		tag.src = "//www.youtube.com/player_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		var player;
+		function onYouTubePlayerAPIReady() {
+		// create the global player from the specific iframe (#video)
+			player = new YT.Player('player', {
+				events: {
+				// call this function when player is ready to use
+				'onReady': onPlayerReady,
+				'onStateChange': onPlayerStateChange
+				}
+			});
 		}
-	</script>
+
+		function onPlayerReady(event) {
+  
+  		// bind events
+			var playButton = document.getElementById("play-button");
+			playButton.addEventListener("click", function() {
+				player.playVideo();
+				document.getElementById('playButtonWrapper').style.display = 'block'; 
+        		this.style.display = 'none';
+				console.log("hello");
+			});
+			if (whichVideo > 0) {
+				event.target.playVideo();
+			}
+  
+		//var pauseButton = document.getElementById("pause-button");
+		//pauseButton.addEventListener("click", function() {
+    	//	player.pauseVideo();
+		//});
+		}
+
+		function onPlayerStateChange(event) {
+			if(event.data === 0) {
+            	whichVideo++;
+            	console.log("hello2")
+            	console.log(whichVideo);
+            	switch(whichVideo) {
+            		case 1: //Act 1 Scene 2
+            			document.getElementById('player').src = "https://www.youtube.com/embed/GqrM9XJ8ZVU?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+            			console.log("hello3");
+            			break;
+            		case 2: //Act 1 Scene 3 and 4
+            			document.getElementById('player').src = "https://www.youtube.com/embed/n4IEuhLrk0U?controls=0&showinfo=0&rel=0&autoplay=1&enablejsapi=1&html5=1";
+            			break;
+
+            	}
+                
+                onYouTubePlayerAPIReady();
+            }
+        }
+
+  </script>
 </body>
 </html>
