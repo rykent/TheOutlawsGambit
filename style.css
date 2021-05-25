@@ -89,6 +89,37 @@ body {
   	transform: translate(-50%, -50%);
 }
 
-#playButtonWrapper {
-	
+.threewidewrapper {
+	position: fixed;
+  	top: 50%;
+  	left: 50%;
+  	/* bring your own prefixes */
+  	transform: translate(-50%, -50%);
+}
+
+
+.option1 {
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 250px;
+	object-fit: fill;
+}
+.option2 {
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 250px;
+	object-fit: fill;
+}
+.option3 {
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 250px;
+	object-fit: fill;
+}
+
+#optionButtonWrapper1 {
+	display: none;
 }

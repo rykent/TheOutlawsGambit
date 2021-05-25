@@ -15,7 +15,14 @@
 		<a href="skills2.html">How To Play</a>
 	</div>
 	</div>
-	<div id="playButtonWrapper"><img src="http://www.clipartbest.com/cliparts/4nc/Egq/4ncEgq4TA.png" id="play-button"></div>
+	<div id="playButtonWrapper">
+		<img src="http://www.clipartbest.com/cliparts/4nc/Egq/4ncEgq4TA.png" id="play-button">
+	</div>
+	<div id="optionButtonWrapper1" class="threewidewrapper">
+		<img id="killButton" src="assets/images/killhim.png" class="option1">
+		<img id="sheriffButton" src="assets/images/sheriff.png" class="option2">
+		<img id="letButton" src="assets/images/lethimgo.png" class="option3">
+	</div>
 	<div class="video-background">
     	<div class="video-foreground">
       		<iframe id="player" src="https://www.youtube.com/embed/gLxw06x8lGo?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
@@ -65,6 +72,7 @@
 		function onPlayerStateChange(event) {
 			if(event.data === 0) {
             	whichVideo++;
+
             	console.log("hello2")
             	console.log(whichVideo);
             	switch(whichVideo) {
@@ -72,9 +80,14 @@
             			document.getElementById('player').src = "https://www.youtube.com/embed/GqrM9XJ8ZVU?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
             			console.log("hello3");
             			break;
-            		case 2: //Act 1 Scene 3 and 4
-            			document.getElementById('player').src = "https://www.youtube.com/embed/n4IEuhLrk0U?controls=0&showinfo=0&rel=0&autoplay=1&enablejsapi=1&html5=1";
+            		case 2: //options
+            			var optioncontainer1 = document.getElementById('optionButtonWrapper1');
+            			optioncontainer1.style.display = "inline-block";
+            			var kill = document.getElementById('killButton');
+            			var sheriff = document.getElementById('killButton');
+            			var letgo = document.getElementById('killButton');
             			break;
+
 
             	}
                 
