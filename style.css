@@ -1,0 +1,51 @@
+@font-face {
+    font-family: '';
+    src: url('fonts/Anderson.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+	background-color: #BFB5AF;
+}
+
+.navbar {
+	z-index: 1;
+	position:fixed;
+	display: inline;
+	width:100%;
+	font-size: 20px;
+	background: #353535;
+	padding: 0px;
+	margin: 0px;
+}
+
+.navbar a {
+	text-decoration: none;
+	color: white;
+	display: block;
+	text-align: center;
+	height: 25px;
+	padding: 10px;
+	float: left;
+}
+
+.navbar a:hover {
+	background: white;
+	color: black;
+}
+
+.active {
+	background: #86bbd8;
+}
+
+h1 {
+	margin: 0;
+}
+
+#ytbg {
+	height: 100%;
+	width: 100%;
+}

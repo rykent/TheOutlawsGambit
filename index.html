@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="scripts/jquery.youtube-background.js"></script>
+	<title>The Outlaws Gambit</title>
+</head>
+<body>
+	<div class="navbar">
+		<a href="index.html" id="homepage">The Outlaws Gambit</a>
+		<a href="skills1.html">About The Project</a>
+		<a href="skills2.html">How To Play</a>
+	</div>
+	<div id="ytbg" data-youtube="https://www.youtube.com/watch?v=Cit-j4B8Osw"></div>
+
+	<script type="text/javascript">
+    	jQuery(document).ready(function() {
+        	$('[data-youtube]').youtube_background();
+    	});
+	</script>
+
+	<script>
+		function startGame() {
+			document.getElementsByTagName("H1").setAttribute("class", "democlass"); 
+		}
+	</script>
+</body>
+</html>
