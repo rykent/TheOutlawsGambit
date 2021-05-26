@@ -1,12 +1,13 @@
 @font-face {
-    font-family: '';
-    src: url('fonts/Anderson.ttf') format('truetype');
+    font-family: 'ChineseRocks';
+    src: url('fonts/chinese_rocks_rg.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
 	margin: 0;
+	font-family: 'ChineseRocks';
 }
 
 .navbar {
@@ -81,7 +82,7 @@ body {
 }
 
 #play-button {
-	width: 200px;
+	width: 350px;
 	position: fixed;
   	top: 50%;
   	left: 50%;

@@ -10,13 +10,13 @@
 <body>
 	<div class="nav-container">
 	<div class="navbar">
-		<a href="index.html" id="playButton">Play Game</a>
-		<a href="skills1.html">About The Project</a>
-		<a href="skills2.html">How To Play</a>
+		<a href="index.html">Play Game</a>
+		<a href="about.html">About The Project</a>
+		<a href="howto.html">How To Play</a>
 	</div>
 	</div>
 	<div id="playButtonWrapper">
-		<img src="http://www.clipartbest.com/cliparts/4nc/Egq/4ncEgq4TA.png" id="play-button">
+		<img src="assets/images/play.gif" id="play-button">
 	</div>
 	<div id="optionButtonWrapper1" class="threewidewrapper">
 		<img id="killButton" src="assets/images/killhim.png" class="option1">
@@ -104,7 +104,7 @@
             			console.log("First Set of Options");
             			var optioncontainer1 = document.getElementById('optionButtonWrapper1');
             			optioncontainer1.style.display = "inline-block";
-            			document.getElementById('player').src = "https://www.youtube.com/embed/xUsH7-R7Aos?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+            			document.getElementById('player').src = "https://www.youtube.com/embed/FDYs_BtDX9w?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
 
             			var kill = document.getElementById('killButton');
             			var killHandler = function() {
@@ -152,14 +152,14 @@
             			console.log("Second Set of Options");
             			var optioncontainer2 = document.getElementById('optionButtonWrapper2');
             			optioncontainer2.style.display = "inline-block";
-            			document.getElementById('player').src = "https://www.youtube.com/embed/xUsH7-R7Aos?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+            			document.getElementById('player').src = "https://www.youtube.com/embed/sYFhFmg1IaY?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
 
             			var goaway = document.getElementById('goawayButton');
             			var goawayHandler = function() {
             				honor -= 5;
             				console.log("Option (go away) was chosen");
 							pickingOption = false;
-							document.getElementById('player').src = "https://www.youtube.com/embed/urWwr5YNANw?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+							document.getElementById('player').src = "https://www.youtube.com/embed/JfbGF2U96fU?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
 							goaway.removeEventListener("click", goawayHandler);
 							onYouTubePlayerAPIReady();
 							optioncontainer2.style.display = "none";
@@ -171,7 +171,7 @@
             				honor += 5;
             				console.log("Option (wastetime) was chosen");
 							pickingOption = false;
-							document.getElementById('player').src = "https://www.youtube.com/embed/s7UyoCJnKWA?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+							document.getElementById('player').src = "https://www.youtube.com/embed/yw4audj3F3Y?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
 							wastetime.removeEventListener("click", wastetimeHandler);
 							onYouTubePlayerAPIReady();
 							optioncontainer2.style.display = "none";
@@ -183,12 +183,14 @@
             				honor += 10;
             				console.log("Option (join them) was chosen");
 							pickingOption = false;
-							document.getElementById('player').src = "https://www.youtube.com/embed/9Fdm__9O_Do?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+							document.getElementById('player').src = "https://www.youtube.com/embed/SMNqnpxmPyQ?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
 							join.removeEventListener("click", joinHandler);
 							onYouTubePlayerAPIReady();
 							optioncontainer2.style.display = "none";
             			};
             			join.addEventListener("click", joinHandler);
+            			break;
+            		case 5: //Act 2
             			break;
 
 
