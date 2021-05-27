@@ -34,7 +34,11 @@
 	</div>
 	<div id="optionButtonWrapper4" class="threewidewrapper">
 		<img id="jonesButton" src="assets/images/fortjones.png" class="option1">
-		<img id="turnerButton" src="assets/images/fortturner.png" class="option2">
+		<img id="turnerButton" src="assets/images/forttuner.png" class="option2">
+	</div>
+	<div id="optionButtonWrapper5" class="threewidewrapper">
+		<img id="snipeButton" src="assets/images/attackthefort.png" class="option1">
+		<img id="rideButton" src="assets/images/ridetofront.png" class="option2">
 	</div>
 	<div class="video-background">
     	<div class="video-foreground">
@@ -65,13 +69,19 @@
 			'u97g3tMFusw', //Act 2 options deadeye 		- 13
 			'H_7Q5jZAfAM', //Act 2 options showmercy 	- 14
 			'wReobSOkPZk', //Act 2 options drown 		- 15
-			'urWwr5YNANw', //Act 2 final				- 16 ******
+			'ly9_l44Wi9Y', //Act 2 final				- 16
 			'oRc0R4go7Qw', //Act 3 scene 1				- 17
 			'1o48diM0Ha8', //Act 3 scene 2				- 18
-			'LrsPTqRbMnM', //Act 3 option1 				- 19
-			'c1TTRUQRYa8', //Act 3 option2 				- 20
+			'LrsPTqRbMnM', //Act 3 option fortjones 	- 19
+			'c1TTRUQRYa8', //Act 3 option2 fortturner 	- 20
 			'SgOh7sJNhww', //Act 3 deadeye				- 21
-			'EdnAOqjon-w'  //Act 4 scene 1				- 22
+			'EdnAOqjon-w', //Act 4 scene 1				- 22
+			'24aDMEAG0XI', //Act 4 scene 2				- 23
+			'oXeMWMS5qmM', //Act 4 options deadeye 		- 24
+			'sTXyntmoT8E', //Act 4 option snipe 		- 25
+			'P7L7cYAd2-g', //Act 4 option walkup 		- 26
+			'pySI2dY-vYU', //Act 4 scene 3				- 27
+			'0hRZOj-msFI'  //Credits 	 				- 28
 		];
 
 		var tag = document.createElement('script');
@@ -276,7 +286,7 @@
             			break;
             		case 10: //Act 3 option 1
             			pickingOption = true;
-            			console.log("Third Set of Options");
+            			console.log("Fourth Set of Options");
             			var optioncontainer4 = document.getElementById('optionButtonWrapper4');
             			optioncontainer4.style.display = "inline-block";
             			player.loadVideoById(videoIDs[21]);
@@ -305,7 +315,45 @@
             			};
             			turner.addEventListener("click", turnerHandler);
             			break;
-            		case 11:
+            		case 11: //Act 4 scene 1
+            			player.loadVideoById(videoIDs[22]);
+            			break;
+            		case 12: //Act 4 options
+            			pickingOption = true;
+            			console.log("Fifth Set of Options");
+            			var optioncontainer5 = document.getElementById('optionButtonWrapper5');
+            			optioncontainer5.style.display = "inline-block";
+            			player.loadVideoById(videoIDs[24]);
+
+            			var snipe = document.getElementById('snipeButton');
+            			var snipeHandler = function() {
+            				console.log("Option (snipe) was chosen");
+							pickingOption = false;
+							
+							player.loadVideoById(videoIDs[25]);
+
+							snipe.removeEventListener("click", snipeHandler);
+							optioncontainer5.style.display = "none";
+            			};
+            			snipe.addEventListener("click", snipeHandler);
+            			
+						var ride = document.getElementById('rideButton');
+            			var rideHandler = function() {
+            				console.log("Option (ride to front) was chosen");
+							pickingOption = false;
+							
+							player.loadVideoById(videoIDs[26]);
+
+							ride.removeEventListener("click", rideHandler);
+							optioncontainer5.style.display = "none";
+            			};
+            			ride.addEventListener("click", rideHandler);
+            			break;
+            		case 13: //Act 4 scene 3
+            			player.loadVideoById(videoIDs[27]);
+            			break;
+            		case 14: //Credits
+            			player.loadVideoById(videoIDs[28]);
             			break;
             	}
             }
