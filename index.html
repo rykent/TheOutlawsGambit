@@ -28,9 +28,13 @@
 		<img id="wastetimeButton" src="assets/images/dontwasteyourtime.png" class="option2">
 		<img id="joinButton" src="assets/images/jointhem.png" class="option3">
 	</div>
+	<div id="optionButtonWrapper3" class="threewidewrapper">
+		<img id="mercyButton" src="assets/images/showmercy.png" class="option1">
+		<img id="drownButton" src="assets/images/drownthem.png" class="option2">
+	</div>
 	<div class="video-background">
     	<div class="video-foreground">
-      		<iframe id="player" src="https://www.youtube.com/embed/i5JAt_6eGzE?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+      		<iframe id="player" src="https://www.youtube.com/embed/E16BzhAj5OU?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
     	</div>
 	</div>
 	<script type="text/javascript">
@@ -38,6 +42,26 @@
 		var whichVideo = 0;
 		var honor = 50;
 		var pickingOption = false;
+		var menuScreen = true;
+
+		var videoIDs = [
+			'E16BzhAj5OU', //Menu 						- 0
+			'i5JAt_6eGzE', //Act 1 Scene 1				- 1
+			'GqrM9XJ8ZVU', //Act 1 Scene 2				- 2
+			'FDYs_BtDX9w', //Act 1 options1 deadeye		- 3
+			'urWwr5YNANw', //Act 1 options1 kill 		- 4
+			's7UyoCJnKWA', //Act 1 options1 sheriff 	- 5
+			'9Fdm__9O_Do', //Act 1 options1 letgo 		- 6
+			'n4IEuhLrk0U', //Act 1 scene 3 and scene 4	- 7
+			'sYFhFmg1IaY', //Act 1 options2 deadeye 	- 8
+			'JfbGF2U96fU', //Act 1 options2 goaway 		- 9
+			'yw4audj3F3Y', //Act 1 options2 wastetime 	- 10
+			'SMNqnpxmPyQ', //Act 1 options2 jointhem 	- 11
+			'n4IEuhLrk0U', //Act 2 scene 1 				- 12
+			'u97g3tMFusw', //Act 2 options deadeye 		- 13
+			'JfbGF2U96fU', //Act 2 options showmercy 	- 14
+			'yw4audj3F3Y'  //Act 2 options drown 		- 15
+		];
 
 		var tag = document.createElement('script');
 		tag.src = "//www.youtube.com/player_api";
@@ -56,27 +80,20 @@
 			});
 		}
 
+		var playButton = document.getElementById("play-button");
+		playButton.addEventListener("click", function() {
+			document.getElementById('playButtonWrapper').style.display = 'block'; 
+      		this.style.display = 'none';
+        	menuScreen = false;
+        	player.loadVideoById(videoIDs[1]);
+			console.log("hello");
+			console.log(event.data);
+		});
+
 		function onPlayerReady(event) {
   
   		// bind events
-			var playButton = document.getElementById("play-button");
-			playButton.addEventListener("click", function() {
-				player.playVideo();
-				document.getElementById('playButtonWrapper').style.display = 'block'; 
-        		this.style.display = 'none';
-				console.log("hello");
-			});
-			if (whichVideo > 0) {
-				event.target.playVideo();
-				console.log("Event Data: " + event.data);
-				console.log("Are we picking Option: " + pickingOption);
-				console.log("What is whichVideo: " + whichVideo);
-			}
-  
-		//var pauseButton = document.getElementById("pause-button");
-		//pauseButton.addEventListener("click", function() {
-    	//	player.pauseVideo();
-		//});
+  			player.playVideo();
 		}
 
 		function onPlayerStateChange(event) {
@@ -85,8 +102,8 @@
 			console.log("Event Data: " + event.data);
 
 			if(event.data === 0) {
-				if (pickingOption) {
-					document.getElementById('player').src = "https://www.youtube.com/embed/kg12uhZu9_o?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+				if (menuScreen) {
+					player.loadVideoById(videoIDs[0]);
 					return;
 				}
 
@@ -96,7 +113,7 @@
             	console.log(whichVideo);
             	switch(whichVideo) {
             		case 1: //Act 1 Scene 2
-            			document.getElementById('player').src = "https://www.youtube.com/embed/GqrM9XJ8ZVU?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+            			player.loadVideoById(videoIDs[2]);
             			console.log("Act 1 Scene2");
             			break;
             		case 2: //options Scene2
@@ -104,16 +121,18 @@
             			console.log("First Set of Options");
             			var optioncontainer1 = document.getElementById('optionButtonWrapper1');
             			optioncontainer1.style.display = "inline-block";
-            			document.getElementById('player').src = "https://www.youtube.com/embed/FDYs_BtDX9w?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+
+            			player.loadVideoById(videoIDs[3]);
 
             			var kill = document.getElementById('killButton');
             			var killHandler = function() {
             				honor += 5;
             				console.log("Option (kill the theif) was chosen");
 							pickingOption = false;
-							document.getElementById('player').src = "https://www.youtube.com/embed/urWwr5YNANw?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+							
+							player.loadVideoById(videoIDs[4]);
+
 							kill.removeEventListener("click", killHandler);
-							onYouTubePlayerAPIReady();
 							optioncontainer1.style.display = "none";
             			};
             			kill.addEventListener("click", killHandler);
@@ -123,9 +142,10 @@
             				honor += 5;
             				console.log("Option (hand to sheriff) was chosen");
 							pickingOption = false;
-							document.getElementById('player').src = "https://www.youtube.com/embed/s7UyoCJnKWA?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+							
+							player.loadVideoById(videoIDs[5]);
+
 							sheriff.removeEventListener("click", sheriffHandler);
-							onYouTubePlayerAPIReady();
 							optioncontainer1.style.display = "none";
             			};
             			sheriff.addEventListener("click", sheriffHandler);
@@ -135,9 +155,10 @@
             				honor += 5;
             				console.log("Option (let go) was chosen");
 							pickingOption = false;
-							document.getElementById('player').src = "https://www.youtube.com/embed/9Fdm__9O_Do?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+							
+							player.loadVideoById(videoIDs[6]);
+
 							letgo.removeEventListener("click", letHandler);
-							onYouTubePlayerAPIReady();
 							optioncontainer1.style.display = "none";
             			};
             			letgo.addEventListener("click", letHandler);
@@ -145,23 +166,24 @@
             		case 3: // Act 1 Scene 3 and 4 part 1
             			console.log("Video #" + whichVideo)
             			console.log("Scene3start")
-            			document.getElementById('player').src = "https://www.youtube.com/embed/n4IEuhLrk0U?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+            			player.loadVideoById(videoIDs[7]);
             			break;
             		case 4: // Act 1 Scene 4 options
             			pickingOption = true;
             			console.log("Second Set of Options");
             			var optioncontainer2 = document.getElementById('optionButtonWrapper2');
             			optioncontainer2.style.display = "inline-block";
-            			document.getElementById('player').src = "https://www.youtube.com/embed/sYFhFmg1IaY?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+            			player.loadVideoById(videoIDs[8]);
 
             			var goaway = document.getElementById('goawayButton');
             			var goawayHandler = function() {
             				honor -= 5;
             				console.log("Option (go away) was chosen");
 							pickingOption = false;
-							document.getElementById('player').src = "https://www.youtube.com/embed/JfbGF2U96fU?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+							
+							player.loadVideoById(videoIDs[9]);
+
 							goaway.removeEventListener("click", goawayHandler);
-							onYouTubePlayerAPIReady();
 							optioncontainer2.style.display = "none";
             			};
             			goaway.addEventListener("click", goawayHandler);
@@ -171,9 +193,10 @@
             				honor += 5;
             				console.log("Option (wastetime) was chosen");
 							pickingOption = false;
-							document.getElementById('player').src = "https://www.youtube.com/embed/yw4audj3F3Y?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+							
+							player.loadVideoById(videoIDs[10]);
+
 							wastetime.removeEventListener("click", wastetimeHandler);
-							onYouTubePlayerAPIReady();
 							optioncontainer2.style.display = "none";
             			};
             			wastetime.addEventListener("click", wastetimeHandler);
@@ -183,21 +206,55 @@
             				honor += 10;
             				console.log("Option (join them) was chosen");
 							pickingOption = false;
-							document.getElementById('player').src = "https://www.youtube.com/embed/SMNqnpxmPyQ?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1";
+							
+							player.loadVideoById(videoIDs[11]);
+
 							join.removeEventListener("click", joinHandler);
-							onYouTubePlayerAPIReady();
 							optioncontainer2.style.display = "none";
             			};
             			join.addEventListener("click", joinHandler);
             			break;
             		case 5: //Act 2
+            			player.loadVideoById(videoIDs[12]);
+            			break;
+            		case 6: //Act 2 options
+            			pickingOption = true;
+            			console.log("Third Set of Options");
+            			var optioncontainer3 = document.getElementById('optionButtonWrapper3');
+            			optioncontainer3.style.display = "inline-block";
+            			player.loadVideoById(videoIDs[13]);
+
+            			var mercy = document.getElementById('mercyButton');
+            			var mercyHandler = function() {
+            				honor += 10;
+            				console.log("Option (show mercy) was chosen");
+							pickingOption = false;
+							
+							player.loadVideoById(videoIDs[14]);
+
+							mercy.removeEventListener("click", mercyHandler);
+							optioncontainer3.style.display = "none";
+            			};
+            			mercy.addEventListener("click", mercyHandler);
+            			
+						var drown = document.getElementById('drownButton');
+            			var drownHandler = function() {
+            				honor -= 10;
+            				console.log("Option (drown) was chosen");
+							pickingOption = false;
+							
+							player.loadVideoById(videoIDs[15]);
+
+							drown.removeEventListener("click", drownHandler);
+							optioncontainer3.style.display = "none";
+            			};
+            			drown.addEventListener("click", drownHandler);
+            			break;
+            		case 7: //Act 3
             			break;
 
 
-
             	}
-                
-                onYouTubePlayerAPIReady();
             }
         }
 
