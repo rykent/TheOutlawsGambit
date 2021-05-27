@@ -106,6 +106,9 @@
 					player.loadVideoById(videoIDs[0]);
 					return;
 				}
+				if (pickingOption) {
+					player.seekTo(0);
+				}
 
             	whichVideo++;
 
