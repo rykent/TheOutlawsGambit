@@ -32,6 +32,10 @@
 		<img id="mercyButton" src="assets/images/showmercy.png" class="option1">
 		<img id="drownButton" src="assets/images/drownthem.png" class="option2">
 	</div>
+	<div id="optionButtonWrapper4" class="threewidewrapper">
+		<img id="jonesButton" src="assets/images/fortjones.png" class="option1">
+		<img id="turnerButton" src="assets/images/fortturner.png" class="option2">
+	</div>
 	<div class="video-background">
     	<div class="video-foreground">
       		<iframe id="player" src="https://www.youtube.com/embed/E16BzhAj5OU?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
@@ -46,7 +50,7 @@
 
 		var videoIDs = [
 			'E16BzhAj5OU', //Menu 						- 0
-			'6HVa4Y-Ymlw', //Act 1 Scene 1				- 1
+			'i5JAt_6eGzE', //Act 1 Scene 1				- 1
 			'GqrM9XJ8ZVU', //Act 1 Scene 2				- 2
 			'FDYs_BtDX9w', //Act 1 options1 deadeye		- 3
 			'urWwr5YNANw', //Act 1 options1 kill 		- 4
@@ -57,10 +61,17 @@
 			'JfbGF2U96fU', //Act 1 options2 goaway 		- 9
 			'yw4audj3F3Y', //Act 1 options2 wastetime 	- 10
 			'SMNqnpxmPyQ', //Act 1 options2 jointhem 	- 11
-			'n4IEuhLrk0U', //Act 2 scene 1 				- 12
+			'aFDD4l5ARuo', //Act 2 scene 1 				- 12
 			'u97g3tMFusw', //Act 2 options deadeye 		- 13
-			'JfbGF2U96fU', //Act 2 options showmercy 	- 14
-			'yw4audj3F3Y'  //Act 2 options drown 		- 15
+			'H_7Q5jZAfAM', //Act 2 options showmercy 	- 14
+			'wReobSOkPZk', //Act 2 options drown 		- 15
+			'urWwr5YNANw'  //Act 2 final				- 16 ******
+			'oRc0R4go7Qw', //Act 3 scene 1				- 17
+			'1o48diM0Ha8', //Act 3 scene 2				- 18
+			'LrsPTqRbMnM', //Act 3 option1 				- 19
+			'c1TTRUQRYa8', //Act 3 option2 				- 20
+			'SgOh7sJNhww', //Act 3 deadeye				- 21
+			'EdnAOqjon-w'  //Act 4 scene 1				- 22
 		];
 
 		var tag = document.createElement('script');
@@ -254,10 +265,48 @@
             			};
             			drown.addEventListener("click", drownHandler);
             			break;
-            		case 7: //Act 3
+            		case 7:
+            			player.loadVideoById(videoIDs[16]);
             			break;
+            		case 8: //Act 3 scene 1
+            			player.loadVideoById(videoIDs[17]);
+            			break;
+            		case 9: //Act 3 scene 2
+            			player.loadVideoById(videoIDs[18]);
+            			break;
+            		case 10: //Act 3 option 1
+            			pickingOption = true;
+            			console.log("Third Set of Options");
+            			var optioncontainer4 = document.getElementById('optionButtonWrapper4');
+            			optioncontainer4.style.display = "inline-block";
+            			player.loadVideoById(videoIDs[21]);
 
+            			var jones = document.getElementById('jonesButton');
+            			var jonesHandler = function() {
+            				console.log("Option (fort jones) was chosen");
+							pickingOption = false;
+							
+							player.loadVideoById(videoIDs[19]);
 
+							jones.removeEventListener("click", jonesHandler);
+							optioncontainer4.style.display = "none";
+            			};
+            			jones.addEventListener("click", jonesHandler);
+            			
+						var turner = document.getElementById('turnerButton');
+            			var turnerHandler = function() {
+            				console.log("Option (fort turner) was chosen");
+							pickingOption = false;
+							
+							player.loadVideoById(videoIDs[20]);
+
+							turner.removeEventListener("click", turnerHandler);
+							optioncontainer4.style.display = "none";
+            			};
+            			turner.addEventListener("click", turnerHandler);
+            			break;
+            		case 11:
+            			break;
             	}
             }
         }
