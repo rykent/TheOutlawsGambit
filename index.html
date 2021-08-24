@@ -18,6 +18,9 @@
 	<div id="playButtonWrapper">
 		<img src="assets/images/play.gif" id="play-button">
 	</div>
+	<div id="muteButtonWrapper">
+		<img src="assets/images/muteButton.png" id="muteButton">
+	</div>
 	<div id="optionButtonWrapper1" class="threewidewrapper">
 		<img id="killButton" src="assets/images/killhim.png" class="option1">
 		<img id="sheriffButton" src="assets/images/sheriff.png" class="option2">
@@ -42,7 +45,7 @@
 	</div>
 	<div class="video-background">
     	<div class="video-foreground">
-      		<iframe id="player" src="https://www.youtube.com/embed/E16BzhAj5OU?controls=0&showinfo=0&rel=0&enablejsapi=1&html5=1" frameborder="0" allowfullscreen></iframe>
+      		<iframe id="player" src="https://www.youtube.com/embed/E16BzhAj5OU?autoplay=1&mute=1&rel=0&enablejsapi=1&html5=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>
     	</div>
 	</div>
 	<script type="text/javascript">
@@ -93,6 +96,15 @@
 		function onYouTubePlayerAPIReady() {
 		// create the global player from the specific iframe (#video)
 			player = new YT.Player('player', {
+				playerVars: {
+                    autoplay: 1,
+                    disablekb: 1,
+                    enablejsapi: 1,
+                    controls: 0,
+                    showinfo: 0,
+                    autohide: 1,
+                    modestbranding: 1,
+                    vq: 'hd1080'},
 				events: {
 				// call this function when player is ready to use
 				'onReady': onPlayerReady,
@@ -109,6 +121,15 @@
         	player.loadVideoById(videoIDs[1]);
 			console.log("hello");
 			console.log(event.data);
+		});
+
+		var muteButton = document.getElementById("muteButton");
+		muteButton.addEventListener("click", function() {
+			if (player.isMuted()) {
+        		player.unMute()
+        	} else {
+        		player.mute();
+        	}
 		});
 
 		function onPlayerReady(event) {
