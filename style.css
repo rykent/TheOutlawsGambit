@@ -107,9 +107,6 @@ body {
 	object-fit: fill;
 }
 
-.option1:hover {
-	width: 275px;
-}
 
 .option2 {
 	float: left;
@@ -117,10 +114,6 @@ body {
 	padding-right: 20px;
 	width: 250px;
 	object-fit: fill;
-}
-
-.option2:hover {
-	width: 275px;
 }
 
 .option3 {
@@ -131,9 +124,6 @@ body {
 	object-fit: fill;
 }
 
-.option3:hover {
-	width: 275px;
-}
 
 #optionButtonWrapper1 {
 	display: none;
