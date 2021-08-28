@@ -19,7 +19,8 @@
 		<img src="assets/images/play.gif" id="play-button">
 	</div>
 	<div id="muteButtonWrapper">
-		<img src="assets/images/muteButton.png" id="muteButton">
+		<img width=250px src="assets/images/muted.png" id="muteButton">
+		<div id="clickToUnmute"> <---Click To Unmute</div>
 	</div>
 	<div id="optionButtonWrapper1" class="threewidewrapper">
 		<img id="killButton" src="assets/images/killhim.png" class="option1">
@@ -54,6 +55,7 @@
 		var honor = 50;
 		var pickingOption = false;
 		var menuScreen = true;
+		var isFirstUnmute = true;
 
 		var videoIDs = [
 			'E16BzhAj5OU', //Menu 						- 0
@@ -124,10 +126,16 @@
 		});
 
 		var muteButton = document.getElementById("muteButton");
+		var muteText = document.getElementById("clickToUnmute");
 		muteButton.addEventListener("click", function() {
 			if (player.isMuted()) {
+				muteButton.src = "assets/images/unmuted.png";
+				if (isFirstUnmute) {
+					muteText.style.display = 'none';
+				}
         		player.unMute()
         	} else {
+        		muteButton.src = "assets/images/muted.png";
         		player.mute();
         	}
 		});
