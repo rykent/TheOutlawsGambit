@@ -22,6 +22,9 @@
 		<img width=250px src="assets/images/muted.png" id="muteButton">
 		<div id="clickToUnmute"> <---Click To Unmute</div>
 	</div>
+	<div id="skipButtonWrapper">
+		<img src="assets/images/skip.png" id="skipButton">
+	</div>
 	<div id="optionButtonWrapper1" class="threewidewrapper">
 		<img id="killButton" src="assets/images/killhim.png" class="option1">
 		<img id="sheriffButton" src="assets/images/sheriff.png" class="option2">
@@ -56,6 +59,7 @@
 		var pickingOption = false;
 		var menuScreen = true;
 		var isFirstUnmute = true;
+		var isMerciful = false;
 
 		var videoIDs = [
 			'E16BzhAj5OU', //Menu 						- 0
@@ -86,7 +90,13 @@
 			'sTXyntmoT8E', //Act 4 option snipe 		- 25
 			'P7L7cYAd2-g', //Act 4 option walkup 		- 26
 			'pySI2dY-vYU', //Act 4 scene 3				- 27
-			'0hRZOj-msFI'  //Credits 	 				- 28
+			'fdAqre8X3hI', //Act 5 scene 1				- 28
+			'nvOi6wl6Gck', //Act 5 scene 2 				- 29
+			'pb2lo5sOc6M', //Act 5 scene 3				- 30
+			'nND-WT42XtI', //Act 5 scene 4				- 31
+			'XxZUbBHsEok', //Act 5 scene 4 high honor 	- 32
+			'cPJUBQd-PNM', //Act 5 scene 4 low honor	- 33
+			'0hRZOj-msFI'  //Credits 	 				- 34
 		];
 
 		var tag = document.createElement('script');
@@ -138,6 +148,12 @@
         		muteButton.src = "assets/images/muted.png";
         		player.mute();
         	}
+		});
+
+		var skipButton = document.getElementById("skipButton");
+		skipButton.addEventListener("click", function(){
+			var currentTime = player.getCurrentTime();
+			player.seekTo(currentTime+30, true);
 		});
 
 		function onPlayerReady(event) {
@@ -282,6 +298,7 @@
             			var mercyHandler = function() {
             				honor += 10;
             				console.log("Option (show mercy) was chosen");
+							isMerciful = true;
 							pickingOption = false;
 							
 							player.loadVideoById(videoIDs[14]);
@@ -381,9 +398,28 @@
             		case 13: //Act 4 scene 3
             			player.loadVideoById(videoIDs[27]);
             			break;
-            		case 14: //Credits
+            		case 14: //Act 5 scene 1
             			player.loadVideoById(videoIDs[28]);
             			break;
+					case 15: //Act 5 scene 2
+						player.loadVideoById(videoIDs[29]);
+            			break;
+					case 16: //Act 5 scene 3
+						player.loadVideoById(videoIDs[30]);
+            			break;
+					case 17: //Act 5 scene 4 part 1
+						player.loadVideoById(videoIDs[31]);
+            			break;
+					case 18: //Act 5 scene 4 part 2
+						if (isMerciful) {
+							player.loadVideoById(videoIDs[32]); //High honor
+						} else {
+							player.loadVideoById(videoIDs[33]); //Low honor
+						}
+            			break;
+					case 19: //Credits
+						player.loadVideoById(videoIDs[34]);
+						break;
             	}
             }
         }

@@ -166,3 +166,13 @@ body {
 	padding-left: 240px;
 	z-index: 50;
 }
+
+#skipButton {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 40px;
+
+}
