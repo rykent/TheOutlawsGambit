@@ -149,10 +149,10 @@ body {
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	padding-bottom: 40px;
-	padding-left: 15px;
-	padding-right: 10px;
-	padding-top: 10px;
+	margin-bottom: 35px;
+	margin-left: 25px;
+	margin-right: 10px;
+	margin-top: 10px;
 	z-index: 69;
 }
 
@@ -163,7 +163,7 @@ body {
 	color: white;
 	font-size: 20px;
 	padding-bottom: 60px;
-	padding-left: 240px;
+	padding-left: 265px;
 	z-index: 50;
 }
 
@@ -171,8 +171,7 @@ body {
 	position: fixed;
 	bottom: 0;
 	right: 0;
-	padding-right: 15px;
-	padding-top: 10px;
-	padding-bottom: 40px;
+	margin-right: 25px;
+	margin-bottom: 35px;
 
 }
