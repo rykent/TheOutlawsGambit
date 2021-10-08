@@ -145,6 +145,10 @@ body {
 	display: none;
 }
 
+#optionButtonWrapper6 {
+	display: none;
+}
+
 #muteButton {
 	position: fixed;
 	bottom: 0;
