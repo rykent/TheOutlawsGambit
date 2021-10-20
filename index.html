@@ -182,6 +182,7 @@
 		pauseButton.addEventListener("click", function(){
 			if (isPaused) {
 				player.playVideo();
+				isPaused = false;
 			} else {
 				player.pauseVideo();
 				isPaused = true;
