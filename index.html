@@ -71,6 +71,7 @@
 		var menuScreen = true;
 		var isFirstUnmute = true;
 		var isMerciful = false;
+		var isPaused = false;
 
 		var videoIDs = [
 			'E16BzhAj5OU', //Menu 						- 0
@@ -107,7 +108,7 @@
 			'-qaTG5T3Jmw', //Act 5 scene 4				- 31
 			'M6qoSZ2m0GU', //Act 5 scene 4 high honor 	- 32
 			'cPJUBQd-PNM', //Act 5 scene 4 low honor	- 33
-			'mubDDbm7jH4', //Act 6 scene 1				- 34	incomplete
+			'ofQS5ijJToE', //Act 6 scene 1				- 34	incomplete
 			'o50MgbJ_k0k', //Act 6 scene 2				- 35	incomplete
 			'aiSULRv5aYM', //Act 6 scene 3 part 1		- 36	incomplete
 			'aWH_3C2Jm_Q', //Act 6 scene 3 deadeye		- 37	incomplete
@@ -169,6 +170,21 @@
         		muteButton.src = "assets/images/muted.png";
         		player.mute();
         	}
+		});
+
+		var backButton = document.getElementById("backButton");
+		backButton.addEventListener("click", function(){
+			var currentTime = player.getCurrentTime();
+			player.seekTo(currentTime-30, true);
+		});
+
+		var pauseButton = document.getElementById("pauseButton");
+		pauseButton.addEventListener("click", function(){
+			if (isPaused) {
+				player.playVideo();
+			} else {
+				player.pauseVideo();
+			}
 		});
 
 		var skipButton = document.getElementById("skipButton");
