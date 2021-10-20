@@ -171,6 +171,24 @@ body {
 	z-index: 50;
 }
 
+#backButtonWrapper {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin-right: 155px;
+	margin-bottom: 35px;
+
+}
+
+#pauseButtonWrapper {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin-right: 90px;
+	margin-bottom: 35px;
+
+}
+
 #skipButtonWrapper {
 	position: fixed;
 	bottom: 0;
