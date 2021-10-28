@@ -32,6 +32,9 @@
 	<div id="skipButtonWrapper">
 		<img width=50px src="assets/images/skip.png" id="skipButton">
 	</div>
+	<div id="act6StartButtonWrapper">
+		<img width=50px src="assets/images/skip.png" id="act6StartButton">
+	</div>
 	<div id="optionButtonWrapper1" class="threewidewrapper">
 		<img id="killButton" src="assets/images/killhim.png" class="option1">
 		<img id="sheriffButton" src="assets/images/sheriff.png" class="option2">
@@ -193,6 +196,12 @@
 		skipButton.addEventListener("click", function(){
 			var currentTime = player.getCurrentTime();
 			player.seekTo(currentTime+30, true);
+		});
+
+		var act6StartButton = document.getElementById("act6StartButton");
+		act6StartButton.addEventListener("click", function(){
+			whichVideo = 19;
+			player.loadVideoById(videoIDs[34]);
 		});
 
 		function onPlayerReady(event) {

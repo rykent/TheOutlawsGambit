@@ -197,3 +197,11 @@ body {
 	margin-bottom: 35px;
 
 }
+
+#act6StartButtonWrapper {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin-right: 310px;
+	margin-bottom: 35px;
+}
