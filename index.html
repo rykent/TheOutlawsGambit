@@ -75,6 +75,7 @@
 		var isFirstUnmute = true;
 		var isMerciful = false;
 		var isPaused = false;
+		var randyAlive = false;
 
 		var videoIDs = [
 			'E16BzhAj5OU', //Menu 						- 0
@@ -120,8 +121,10 @@
 			'xpWa9_C2XjY', //Act 6 scene 3 option 3		- 40
 			'Vct74ovmBYI', //Act 6 scene 4				- 41
 			'i6JWD5ooDFw', //Act 6 scene 5				- 42
-			'-x3qfRphLsI', //Act 6 scene 6				- 43	incomplete
-			'0hRZOj-msFI'  //Credits 	 				- 44	incomplete
+			'AUQk-gMKcxI', //Act 6 scene 6				- 43
+			'QHl3wJvXtrM', //Epilogue					- 44
+			'FMZgU_Eg0Sk', //Credits 	 				- 45
+			'qPkf9fz1aY0'  //Post Credit				- 46
 		];
 
 		var tag = document.createElement('script');
@@ -501,7 +504,7 @@
             			var freeHandler = function() {
             				console.log("Option (free Randy) was chosen");
 							pickingOption = false;
-							
+							randyAlive = true;
 							player.loadVideoById(videoIDs[40]); //Act 6 scene 3 option 3
 
 							free.removeEventListener("click", freeHandler);
@@ -515,11 +518,19 @@
 					case 24: //Act 6 scene 5
 						player.loadVideoById(videoIDs[42]);
 						break;
-					case 25: //Act 6 scene 6
+					case 25: //Act 6 scene 6 part 1
 						player.loadVideoById(videoIDs[43]);
 						break;
-					case 26: //Credits
+					case 26: //Epilogue
 						player.loadVideoById(videoIDs[44]);
+						break;
+					case 27: //Credits
+						player.loadVideoById(videoIDs[45]);
+						break;
+					case 28: //Post Credit Scene
+						if (randyAlive) {
+							player.loadVideoById(videoIDs[46]);
+						}
 						break;
             	}
             }
